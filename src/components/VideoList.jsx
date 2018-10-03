@@ -21,11 +21,13 @@ import VideoListEntry from './VideoListEntry.js';
 
 //   }
 // }
-var VideoList = (videosObject) => {
-  console.log(videosObject);
+var VideoList = (props) => {
   return (
     <div className="video-list">
-      { videosObject.videos.map(video => (<VideoListEntry video={video} />)) }
+      { 
+        props.videos.map(video => (
+          <VideoListEntry video={video} handleTitleClick={props.handleTitleClick} />)) 
+      }
     </div>
   );
 };

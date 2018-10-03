@@ -1,13 +1,13 @@
-var VideoPlayer = (video) => {
-  let videoPlayerUrl = 'https://www.youtube.com/embed/' + App.videoCounter;
+var VideoPlayer = (props) => {
+  let videoPlayerUrl = 'https://www.youtube.com/embed/' + props.video.id.videoId;
   return (
     <div className="video-player">
       <div className="embed-responsive embed-responsive-16by9">
         <iframe className="embed-responsive-item" src={videoPlayerUrl} allowFullScreen></iframe>
       </div>
       <div className="video-player-details">
-        <h3></h3>
-        <div></div>
+        <h3>{props.video.snippet.title}</h3>
+        <div>{props.video.snippet.description}</div>
       </div>
     </div>
   );
