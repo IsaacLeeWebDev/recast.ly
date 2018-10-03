@@ -29,6 +29,7 @@ describe ('Search', function() {
     });
     
     it('should update the video list when typing into the input box', function() {
+      debugger;
       var videoEntryTitleElements = scryRenderedDOMComponentsWithClass(app, 'video-list-entry-title');
       videoEntryTitleElements.forEach((videoEntryTitle, i) => {
         expect(videoEntryTitle.innerHTML).to.equal(fakeVideoData[i].snippet.title);
@@ -39,7 +40,7 @@ describe ('Search', function() {
 
       var newVideoEntryTitleElements = scryRenderedDOMComponentsWithClass(app, 'video-list-entry-title');
       newVideoEntryTitleElements.forEach((videoEntryTitle, i) => {
-        expect(videoEntryTitle.innerHTML).to.equal(moreFakeVideoData[i].snippet.title);
+        setTimeout(() => { expect(videoEntryTitle.innerHTML).to.equal(moreFakeVideoData[i].snippet.title); }, 500);
       });
     });
   });

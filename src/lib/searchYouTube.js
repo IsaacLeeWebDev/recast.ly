@@ -1,5 +1,4 @@
 var searchYouTube = ({key, query, max}, callback) => {
-  console.log('get!');
   $.get('https://www.googleapis.com/youtube/v3/search', {
     part: 'snippet',
     key: key,
@@ -10,6 +9,7 @@ var searchYouTube = ({key, query, max}, callback) => {
   })
     .done(({items}) => {
       if (callback) {
+        console.log('get!');
         callback(items);
       }
     })

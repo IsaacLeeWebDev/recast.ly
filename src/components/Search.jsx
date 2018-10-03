@@ -5,6 +5,7 @@ class Search extends React.Component {
     this.state = {
       value: ''
     };
+    // this.initialRender = true;
   }
   
   handleInputChange(event) {
@@ -13,10 +14,11 @@ class Search extends React.Component {
   }
   
   render() {
-    let context = this;
+    // if(this.initialRender) {
+    this.initialRender = false;
     return (
       <div className="search-bar form-inline">
-        <input className="form-control" type="text" value={this.state.value} onChange={_.debounce(context.handleInputChange.bind(context), 500)}/>
+        <input className="form-control" type="text" value={this.state.value} onChange={this.handleInputChange.bind(this)}/>
         <button className="btn hidden-sm-down">
           <span className="glyphicon glyphicon-search"></span>
         </button>

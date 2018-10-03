@@ -1,6 +1,5 @@
 import VideoList from './VideoList.js';
 import Search from './Search.js';
-import exampleVideoData from '/src/data/exampleVideoData.js';
 import VideoPlayer from './VideoPlayer.js';
 class App extends React.Component {
   constructor(props) {
@@ -23,10 +22,19 @@ class App extends React.Component {
     this.props.searchYouTube(options, (videos) => {
       this.setState({allVideos: videos, currentVideo: videos[0]});
     });
+  }  
+  
+  handleInputChange() {
+    if(this.initialRender) {
+      this.initialRender = false;  
+      return (query) => this.getYouTubeVideos(query);
+    } else {
+      return _.debounce((query) => this.getYouTubeVideos(query), 500);
+    }
   }
   
   componentDidMount() {
-    this.getYouTubeVideos('react tutorial');
+    this.getYouTubeVideos('chuck testa');
   }
   
   render() {
@@ -34,7 +42,7 @@ class App extends React.Component {
       <div>
         <nav className="navbar">
           <div className="col-md-6 offset-md-3">
-            <Search handleInputChange={this.getYouTubeVideos.bind(this)}/>
+            <Search handleInputChange={this.handleInputChange()}/>
           </div>
         </nav>
         <div className="row">
